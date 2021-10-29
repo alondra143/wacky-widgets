@@ -15,3 +15,9 @@ table a {
     color: red;
     text-decoration: none;
 }
+#id_description {
+    height: 10vh;
+}
+#delete-btn {
+    color: red;
+}

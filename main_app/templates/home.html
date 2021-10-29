@@ -8,51 +8,44 @@
     <title>PROJECT ASSESSMENT THREE: Wacky Widgets</title>
 </head>
 <body>
-    <h1>Wacky Widgets</h1>
+    <h1 align='center'>Wacky Widgets</h1>
     
     {% if widgets %}
-        <table class="pure-table pure-table-striped">
+        <table class="pure-table pure-table-striped" align='center'>
             <thead>
-                <tr>
                     <th>Description</th>
-                </tr>
-                <tr>
                     <th>Quantity</th>
-                </tr>
-                <tr>
                     <th>Delete Item</th>
-                </tr>
             <tbody>
-                for each widget in widgets statement
                 
+                {% for widget in widgets %}
                 <tr>
                     <td>
-                        widget description here
+                        {{ widget.description }}
                     </td>
                     <td>
-                        widget quantity here
+                        {{ widget.quantity }}
                     </td>
                     <td>
-                        delete button here
-                        <form action="{% url 'delete_widget' %}" method="POST" class="pure-form">
+                        <form action="{% url 'delete_widget' widget.id %}" method="POST">
                             {% csrf_token %}
-                            <input type="submit" class="pure-button" value="X">
+                            <input type="submit" class="pure-button" value="X" id="delete-btn">
                         </form>
                     </td>
                 </tr>
+                {% endfor %}
             </tbody>
             </thead>
         </table>
     {% else %}
-        <h3>No Widgets Exist</h3>
+        <h3 align='center'>No Widgets Exist</h3>
     {% endif %}
     <hr/>
-    <h4>Add Widget</h4>
-    form as table will go here
-    <form action="{% url 'add_widget' %}" method="POST" class="pure-form">
+    <h4 align='center'>Add Widget</h4>
+    <form action="{% url 'add_widget' %}" method="POST" class="pure-form" align='center'>
         {% csrf_token %}
-        <input type="submit" class="pure-button" value="+">
+        {{ widget_form.as_p }}
+        <input type="submit" class="pure-button" value="ADD A WIDGET">
     </form>
-    submit button add a widget
 </body>
 </html>
