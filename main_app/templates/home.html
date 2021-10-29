@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w" crossorigin="anonymous">
+    <title>PROJECT ASSESSMENT THREE: Wacky Widgets</title>
+</head>
+<body>
+    <h1>Wacky Widgets</h1>
+    
+    {% if widgets %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Description</th>
+                </tr>
+                <tr>
+                    <th>Quantity</th>
+                </tr>
+                <tr>
+                    <th>Delete Item</th>
+                </tr>
+            <tbody>
+                for each widget in widgets statement
+                
+                <tr>
+                    <td>
+                        widget description here
+                    </td>
+                    <td>
+                        widget quantity here
+                    </td>
+                    <td>
+                        delete button here
+                        <form action="" method="POST">
+                            {% csrf_token %}
+                            <input type="submit" class="btn" value="X">
+                        </form>
+                    </td>
+                </tr>
+            </tbody>
+            </thead>
+        </table>
+    {% else %}
+        <h3>No Widgets Exist</h3>
+    {% endif %}
+    <hr/>
+    form as table will go here
+    <form action="" method="POST">
+        {% csrf_token %}
+        <input type="submit" class="btn" value="+">
+    </form>
+    submit button add a widget
+</body>
+</html>
